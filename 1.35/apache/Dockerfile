@@ -62,6 +62,11 @@ RUN set -eux; \
 	} > "$APACHE_CONFDIR/conf-available/short-url.conf"; \
 	a2enconf short-url
 
+# Enable AllowEncodedSlashes for VisualEditor
+RUN set -eux; \
+	echo "AllowEncodedSlashes NoDecode" > "$APACHE_CONFDIR/conf-available/allow-encoded-slashes.conf"; \
+	a2enconf allow-encoded-slashes
+
 # set recommended PHP.ini settings
 # see https://secure.php.net/manual/en/opcache.installation.php
 RUN { \
